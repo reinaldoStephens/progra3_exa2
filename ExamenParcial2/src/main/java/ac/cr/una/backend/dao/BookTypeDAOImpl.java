@@ -6,6 +6,8 @@
 package ac.cr.una.backend.dao;
 
 import ac.cr.una.backend.model.BookType;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Query;
 
 /**
@@ -19,11 +21,11 @@ public class BookTypeDAOImpl implements BookTypeDAO {
     @Override
     public boolean deleteAll() {
         boolean isDeleted = false;
-        BookType bookType = null;
+        List<BookType> bookTypeList = new ArrayList();
 
         session.beginTransaction();
-        bookType = (BookType) session.get(BookType.class);
-        session.delete(bookType);
+        bookTypeList = session.createCriteria(BookType.class).list();
+        session.delete(bookTypeList);
         isDeleted = true;
         session.getTransaction().commit();
 
