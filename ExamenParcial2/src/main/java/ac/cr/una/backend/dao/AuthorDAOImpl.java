@@ -5,10 +5,28 @@
  */
 package ac.cr.una.backend.dao;
 
+import ac.cr.una.backend.model.Author;
+import org.hibernate.Query;
+
 /**
  *
  * @author Admin
  */
-public class AuthorDAOImpl {
-    
+public class AuthorDAOImpl implements AuthorDAO {
+
+    private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+
+    @Override
+    public Author findByName(String name) {
+        Author author = null;
+        Query query = session.createQuery("from author where name = :name ");
+        query.setParameter("name", name);
+
+        if (query.list().size() > 0) {
+            author = (Author) query.list().get(0);
+        }
+
+        return author;
+    }
+
 }

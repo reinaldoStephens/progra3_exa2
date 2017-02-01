@@ -6,6 +6,7 @@
 package ac.cr.una.backend.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,8 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "author", catalog = "progra3_exa2", uniqueConstraints = {
     @UniqueConstraint(columnNames = "id_author")})
-public class Author implements Serializable{
+public class Author implements Serializable {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_author", unique = true, nullable = false)
@@ -54,8 +56,37 @@ public class Author implements Serializable{
     }
 
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + this.idAuthor;
+        hash = 37 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Author other = (Author) obj;
+        if (this.idAuthor != other.idAuthor) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public String toString() {
         return "Author{" + "idAuthor=" + idAuthor + ", name=" + name + '}';
     }
-    
+
 }

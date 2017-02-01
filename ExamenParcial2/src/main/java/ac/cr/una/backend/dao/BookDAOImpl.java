@@ -5,10 +5,48 @@
  */
 package ac.cr.una.backend.dao;
 
+import ac.cr.una.backend.model.Book;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Admin
  */
-public class BookDAOImpl {
-    
+public class BookDAOImpl implements BookDAO {
+
+    private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+
+    @Override
+    public boolean deleteAll() {
+        boolean isDeleted = false;
+        Book book = null;
+
+        session.beginTransaction();
+        book = (Book) session.get(Book.class);
+        session.delete(book);
+        isDeleted = true;
+        session.getTransaction().commit();
+
+        return isDeleted;
+    }
+
+    @Override
+    public Book save(Book book) {
+        session.beginTransaction();
+        session.save(book);
+        session.getTransaction().commit();
+
+        return book;
+    }
+
+    @Override
+    public List<Book> findAll() {
+        List<Book> book = new ArrayList<>();
+
+        book = session.createCriteria(Book.class).list();
+
+        return book;
+    }
+
 }
