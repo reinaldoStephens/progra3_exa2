@@ -12,5 +12,11 @@ import ac.cr.una.backend.model.Author;
  * @author Admin
  */
 public interface AuthorDAO {
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Author findByName (String name);
 }

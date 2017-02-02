@@ -17,20 +17,21 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
 
     private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean deleteAll() {
-        boolean isDeleted = false;
-        List<AuthorContact> authorContactList = new ArrayList<>();
-
-        session.beginTransaction();
-        authorContactList = session.createCriteria(AuthorContact.class).list();
-        session.delete(authorContactList);
-        isDeleted = true;
-        session.getTransaction().commit();
-
-        return isDeleted;
+        session.getSessionFactory().getCurrentSession().createSQLQuery("delete from authorcontact").executeUpdate();
+        return true;
     }
 
+    /**
+     *
+     * @param authorContact
+     * @return
+     */
     @Override
     public AuthorContact save(AuthorContact authorContact) {
         session.beginTransaction();
@@ -40,6 +41,10 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
         return authorContact;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<AuthorContact> findAll() {
         List<AuthorContact> authorContactList = new ArrayList<>();

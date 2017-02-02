@@ -14,8 +14,30 @@ import java.util.List;
  * @author Admin
  */
 public interface AuthorService {
+
+    /**
+     *
+     * @return
+     */
     public boolean deleteAll();
+
+    /**
+     *
+     * @param authorContact
+     * @return
+     */
     public AuthorContact save(AuthorContact authorContact);
+
+    /**
+     *
+     * @return
+     */
     public List<AuthorContact> findAll();
+
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Author findByName(String name);
 }

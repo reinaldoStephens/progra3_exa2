@@ -19,6 +19,7 @@ import javax.persistence.UniqueConstraint;
  *
  * @author Admin
  */
+
 @Entity
 @Table(name = "author", catalog = "progra3_exa2", uniqueConstraints = {
     @UniqueConstraint(columnNames = "id_author")})
@@ -31,26 +32,50 @@ public class Author implements Serializable {
     @Column(name = "name", unique = false, nullable = false)
     private String name;
 
+    /**
+     *
+     */
     public Author() {
     }
 
+    /**
+     *
+     * @param idAuthor
+     * @param name
+     */
     public Author(int idAuthor, String name) {
         this.idAuthor = idAuthor;
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdAuthor() {
         return idAuthor;
     }
 
+    /**
+     *
+     * @param idAuthor
+     */
     public void setIdAuthor(int idAuthor) {
         this.idAuthor = idAuthor;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }

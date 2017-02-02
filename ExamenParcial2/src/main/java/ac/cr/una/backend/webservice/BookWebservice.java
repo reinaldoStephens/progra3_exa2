@@ -34,9 +34,16 @@ public class BookWebservice {
     @Context
     private UriInfo context;
 
+    /**
+     *
+     */
     public BookWebservice() {
     }
 
+    /**
+     *
+     * @return
+     */
     @DELETE
     @Path("/")
     public boolean deleteAll() {
@@ -48,6 +55,11 @@ public class BookWebservice {
         return result;
     }
 
+    /**
+     *
+     * @param book
+     * @return
+     */
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -61,6 +73,10 @@ public class BookWebservice {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @GET
     @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -74,6 +90,10 @@ public class BookWebservice {
         return books;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getTotalPrice() {
         return 0;
     }

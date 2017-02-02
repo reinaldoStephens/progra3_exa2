@@ -40,9 +40,19 @@ public class AuthorContact implements Serializable {
     @Column(name = "type", unique = false, nullable = false)
     private String type;
 
+    /**
+     *
+     */
     public AuthorContact() {
     }
 
+    /**
+     *
+     * @param idAuthorContact
+     * @param author
+     * @param contact
+     * @param type
+     */
     public AuthorContact(int idAuthorContact, Author author, String contact, String type) {
         this.idAuthorContact = idAuthorContact;
         this.author = author;
@@ -50,34 +60,66 @@ public class AuthorContact implements Serializable {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdAuthorContact() {
         return idAuthorContact;
     }
 
+    /**
+     *
+     * @param idAuthorContact
+     */
     public void setIdAuthorContact(int idAuthorContact) {
         this.idAuthorContact = idAuthorContact;
     }
 
+    /**
+     *
+     * @return
+     */
     public Author getAuthor() {
         return author;
     }
 
+    /**
+     *
+     * @param author
+     */
     public void setAuthor(Author author) {
         this.author = author;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContact() {
         return contact;
     }
 
+    /**
+     *
+     * @param contact
+     */
     public void setContact(String contact) {
         this.contact = contact;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(String type) {
         this.type = type;
     }

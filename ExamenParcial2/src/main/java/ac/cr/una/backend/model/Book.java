@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -42,13 +43,26 @@ public class Book implements Serializable {
     @Column(name = "name", unique = false, nullable = false)
     private String name;
     @Column(name = "date_release", unique = false, nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dateRelease;
     @Column(name = "price", unique = false, nullable = false)
     private float price;
 
+    /**
+     *
+     */
     public Book() {
     }
 
+    /**
+     *
+     * @param idBook
+     * @param author
+     * @param type
+     * @param name
+     * @param dateRelease
+     * @param price
+     */
     public Book(int idBook, Author author, BookType type, String name, Calendar dateRelease, float price) {
         this.idBook = idBook;
         this.author = author;
@@ -58,50 +72,98 @@ public class Book implements Serializable {
         this.price = price;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdBook() {
         return idBook;
     }
 
+    /**
+     *
+     * @param idBook
+     */
     public void setIdBook(int idBook) {
         this.idBook = idBook;
     }
 
+    /**
+     *
+     * @return
+     */
     public Author getAuthor() {
         return author;
     }
 
+    /**
+     *
+     * @param author
+     */
     public void setAuthor(Author author) {
         this.author = author;
     }
 
+    /**
+     *
+     * @return
+     */
     public BookType getType() {
         return type;
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(BookType type) {
         this.type = type;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public Calendar getDateRelease() {
         return dateRelease;
     }
 
+    /**
+     *
+     * @param dateRelease
+     */
     public void setDateRelease(Calendar dateRelease) {
         this.dateRelease = dateRelease;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getPrice() {
         return price;
     }
 
+    /**
+     *
+     * @param price
+     */
     public void setPrice(float price) {
         this.price = price;
     }

@@ -6,8 +6,6 @@
 package ac.cr.una.backend.dao;
 
 import ac.cr.una.backend.model.BookType;
-import java.util.ArrayList;
-import java.util.List;
 import org.hibernate.Query;
 
 /**
@@ -18,20 +16,21 @@ public class BookTypeDAOImpl implements BookTypeDAO {
 
     private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean deleteAll() {
-        boolean isDeleted = false;
-        List<BookType> bookTypeList = new ArrayList();
-
-        session.beginTransaction();
-        bookTypeList = session.createCriteria(BookType.class).list();
-        session.delete(bookTypeList);
-        isDeleted = true;
-        session.getTransaction().commit();
-
-        return isDeleted;
+        session.getSessionFactory().getCurrentSession().createSQLQuery("delete from booktype").executeUpdate();
+        return true;
     }
 
+    /**
+     *
+     * @param bookType
+     * @return
+     */
     @Override
     public BookType save(BookType bookType) {
         session.beginTransaction();
@@ -41,11 +40,16 @@ public class BookTypeDAOImpl implements BookTypeDAO {
         return bookType;
     }
 
+    /**
+     *
+     * @param type
+     * @return
+     */
     @Override
-    public BookType findByName(String name) {
+    public BookType findByName(String type) {
         BookType bookType = null;
-        Query query = session.createQuery("from author where name = :name ");
-        query.setParameter("name", name);
+        Query query = session.createQuery("from author where type = :type ");
+        query.setParameter("type", type);
 
         if (query.list().size() > 0) {
             bookType = (BookType) query.list().get(0);

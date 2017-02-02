@@ -16,6 +16,11 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @Override
     public Author findByName(String name) {
         Author author = null;

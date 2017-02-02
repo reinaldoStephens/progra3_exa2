@@ -17,20 +17,21 @@ public class BookDAOImpl implements BookDAO {
 
     private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean deleteAll() {
-        boolean isDeleted = false;
-        List<Book> bookList = new ArrayList<>();
-
-        session.beginTransaction();
-        bookList = session.createCriteria(Book.class).list();
-        session.delete(bookList);
-        isDeleted = true;
-        session.getTransaction().commit();
-
-        return isDeleted;
+        session.getSessionFactory().getCurrentSession().createSQLQuery("delete from book").executeUpdate();
+        return true;
     }
 
+    /**
+     *
+     * @param book
+     * @return
+     */
     @Override
     public Book save(Book book) {
         session.beginTransaction();
@@ -40,6 +41,10 @@ public class BookDAOImpl implements BookDAO {
         return book;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Book> findAll() {
         List<Book> book = new ArrayList<>();
