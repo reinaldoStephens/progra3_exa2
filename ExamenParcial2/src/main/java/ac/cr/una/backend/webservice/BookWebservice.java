@@ -68,9 +68,9 @@ public class BookWebservice {
         bookDAO = new BookDAOImpl();
         bookService = new BookServiceImpl(bookDAO);
 
-        bookService.save(book);
+        book = bookService.save(book);
 
-        return null;
+        return book;
     }
 
     /**
@@ -95,7 +95,13 @@ public class BookWebservice {
      * @return
      */
     public float getTotalPrice() {
-        return 0;
+        float price = 0;
+        bookDAO = new BookDAOImpl();
+        bookService = new BookServiceImpl(bookDAO);
+        
+        price = bookService.totalPriceAll();
+        
+        return price;
     }
 
 }

@@ -22,12 +22,12 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "author", catalog = "progra3_exa2", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "id_author")})
+    @UniqueConstraint(columnNames = "idAuthor")})
 public class Author implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_author", unique = true, nullable = false)
+    @Column(name = "idAuthor", unique = true, nullable = false)
     private int idAuthor;
     @Column(name = "name", unique = false, nullable = false)
     private String name;

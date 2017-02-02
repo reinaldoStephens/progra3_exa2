@@ -8,6 +8,7 @@ package ac.cr.una.backend.dao;
 import ac.cr.una.backend.model.Book;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.Session;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class BookDAOImpl implements BookDAO {
 
-    private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+    private final Session session = HibernateUtil.getSessionFactory().openSession();
 
     /**
      *

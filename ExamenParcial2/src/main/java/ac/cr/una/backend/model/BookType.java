@@ -20,13 +20,13 @@ import javax.persistence.UniqueConstraint;
  * @author Admin
  */
 @Entity
-@Table(name = "bookType", catalog = "progra3_exa2", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "id_type")})
+@Table(name = "booktype", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idType")})
 public class BookType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_type", unique = true, nullable = false)
+    @Column(name = "idType", unique = true, nullable = false)
     private int idType;
     @Column(name = "type", unique = false, nullable = false)
     private String type;

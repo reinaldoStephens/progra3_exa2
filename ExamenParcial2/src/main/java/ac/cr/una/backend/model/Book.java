@@ -27,22 +27,22 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "book", catalog = "progra3_exa2", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "id_book")})
+    @UniqueConstraint(columnNames = "idBook")})
 public class Book implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_book", unique = true, nullable = false)
+    @Column(name = "idBook", unique = true, nullable = false)
     private int idBook;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_author", nullable = false)
+    @JoinColumn(name = "idAuthor", nullable = false)
     private Author author;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_bookType", nullable = false)
+    @JoinColumn(name = "idBookType", nullable = false)
     private BookType type;
     @Column(name = "name", unique = false, nullable = false)
     private String name;
-    @Column(name = "date_release", unique = false, nullable = false)
+    @Column(name = "dateRelease", unique = false, nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar dateRelease;
     @Column(name = "price", unique = false, nullable = false)

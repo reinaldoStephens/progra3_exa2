@@ -42,18 +42,18 @@ public class BookTypeWebservice {
 
     /**
      *
-     * @param name
+     * @param type
      * @return
      */
     @GET
-    @Path("/{name}")
+    @Path("/{type}")
     @Produces(MediaType.APPLICATION_JSON)
-    public BookType getByName(@PathParam("name") String name) {
+    public BookType getByName(@PathParam("type") String type) {
         BookType bookType = null;
         bookTypeDAO = new BookTypeDAOImpl();
         bookTypeService = new BookTypeServiceImpl(bookTypeDAO);
 
-        bookType = bookTypeService.findByName(name);
+        bookType = bookTypeService.findByName(type);
 
         return bookType;
     }
@@ -87,9 +87,9 @@ public class BookTypeWebservice {
         bookTypeDAO = new BookTypeDAOImpl();
         bookTypeService = new BookTypeServiceImpl(bookTypeDAO);
 
-        bookTypeService.save(bookType);
+        bookType = bookTypeService.save(bookType);
 
-        return null;
+        return bookType;
     }
 
 }

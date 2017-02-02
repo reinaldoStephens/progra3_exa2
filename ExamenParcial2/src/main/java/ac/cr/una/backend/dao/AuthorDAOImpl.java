@@ -7,6 +7,7 @@ package ac.cr.una.backend.dao;
 
 import ac.cr.una.backend.model.Author;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -14,7 +15,7 @@ import org.hibernate.Query;
  */
 public class AuthorDAOImpl implements AuthorDAO {
 
-    private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+    private final Session session = HibernateUtil.getSessionFactory().openSession();
 
     /**
      *

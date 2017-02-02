@@ -24,16 +24,16 @@ import javax.persistence.UniqueConstraint;
  * @author Admin
  */
 @Entity
-@Table(name = "authorContact", catalog = "progra3_exa2", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "id_authorContact")})
+@Table(name = "authorcontact", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idAuthorContact")})
 public class AuthorContact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id_authorContact")
+    @Column(name = "idAuthorContact")
     private int idAuthorContact;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_author", nullable = false)
+    @JoinColumn(name = "idAuthor", nullable = false)
     private Author author;
     @Column(name = "contact", unique = false, nullable = false)
     private String contact;

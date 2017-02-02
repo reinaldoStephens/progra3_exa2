@@ -7,6 +7,7 @@ package ac.cr.una.backend.dao;
 
 import ac.cr.una.backend.model.BookType;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -14,7 +15,7 @@ import org.hibernate.Query;
  */
 public class BookTypeDAOImpl implements BookTypeDAO {
 
-    private final org.hibernate.Session session = HibernateUtil.getSessionFactory().openSession();
+    private final Session session = HibernateUtil.getSessionFactory().openSession();
 
     /**
      *

@@ -109,8 +109,8 @@ public class AuthorWebservice {
         authorContactDAO = new AuthorContactDAOImpl();
         authorService = new AuthorServiceImpl(authorDAO);
 
-        authorService.save(authorContact);
-        return null;
+        authorContact = authorService.save(authorContact);
+        return authorContact;
     }
 
 }
